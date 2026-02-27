@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics Dashboard | MetricX</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="toggleSidebar()" class="toggle-btn">☰</button>
+        <h2>📊 MetricX</h2>
+        <ul>
+            <li onclick="showSection('dashboard')" id="nav-dashboard" class="active">Dashboard</li>
+            <li onclick="showSection('reports')" id="nav-reports">Reports</li>
+            <li onclick="showSection('analytics')" id="nav-analytics">Analytics</li>
+            <li onclick="showSection('settings')" id="nav-settings">Settings</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="top-bar">
+            <h1>Startup Analytics Dashboard</h1>
+            <button onclick="toggleDarkMode()" class="dark-btn">🌙 Dark Mode</button>
+        </div>
+
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboard" class="section-page">
+
+            <div class="kpi-container">
+                <div class="kpi-card">
+                    <h3>Revenue</h3>
+                    <p id="revenueDisplay">$0</p>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Customers</h3>
+                    <p id="customersDisplay">0</p>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Employees</h3>
+                    <p id="employeesDisplay">0</p>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Profit</h3>
+                    <p id="profitDisplay">$0</p>
+                </div>
+            </div>
+
+            <select onchange="updateChart(this.value)">
+                <option value="monthly">Monthly</option>
+                <option value="yearly">Yearly</option>
+            </select>
+
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="customerChart"></canvas>
+            </div>
+
+        </div>
+
+        <!-- REPORTS -->
+        <div id="reports" class="section-page" style="display:none;">
+            <h2>Reports</h2>
+            <p>Download monthly and yearly reports.</p>
+        </div>
+
+        <!-- ANALYTICS -->
+        <div id="analytics" class="section-page" style="display:none;">
+            <h2>Advanced Analytics</h2>
+            <canvas id="analyticsChart"></canvas>
+        </div>
+
+        <!-- SETTINGS -->
+        <div id="settings" class="section-page" style="display:none;">
+            <h2>Settings</h2>
+            <button onclick="resetData()">Reset Data</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
